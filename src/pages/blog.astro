@@ -4,15 +4,22 @@ import BlogPost from "../components/BlogPost.astro";
 
 const pageTitle = "My Learning Astro Blog";
 
-const posts = Object.values(import.meta.glob('./posts/*.md', { eager: true}));
+const posts = Object.values(import.meta.glob("./posts/*.md", { eager: true }));
 ---
+
 <BaseLayout pageTitle={pageTitle}>
-        <h2>Reflections on Ghost of Tsushima</h2>
-        <p>This is the first essay I write commenting a piece of game, movie, book, art or anything I find useful.</p>
-        <p>We start with the journey of Jin Sakai in the island of Tsushima.</p>
+  <h2>Reflections on Ghost of Tsushima</h2>
+  <p>
+    This is the first essay I write commenting a piece of game, movie, book, art
+    or anything I find useful.
+  </p>
+  <p>We start with the journey of Jin Sakai in the island of Tsushima.</p>
 
-        <ul>
-            {posts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title}/>)}
-        </ul>
+  <ul>
+    {
+      posts.map((post: any) => (
+        <BlogPost url={post.url} title={post.frontmatter.title} />
+      ))
+    }
+  </ul>
 </BaseLayout>
-
